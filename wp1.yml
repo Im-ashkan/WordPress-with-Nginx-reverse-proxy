@@ -1,32 +1,34 @@
-version: '3.8'
-services:
-  wp-db:
-    image: mariadb:latest
-    container_name: wp-db
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: rootpass
-      MYSQL_DATABASE: wordpress
-      MYSQL_USER: wpuser
-      MYSQL_PASSWORD: wppass
-    volumes:
-      - wpdb_data:/var/lib/mysql
+version: '3'
 
-  wordpress:
-    depends_on:
-      - wp-db
+services:
+  wordpress1:
     image: wordpress:latest
-    container_name: wordpress-site
-    ports:
-      - '8080:80'
     environment:
-      WORDPRESS_DB_HOST: wp-db:3306
-      WORDPRESS_DB_USER: wpuser
-      WORDPRESS_DB_PASSWORD: wppass
-      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_HOST: db1
+      WORDPRESS_DB_USER: user1
+      WORDPRESS_DB_PASSWORD: pass1
+      WORDPRESS_DB_NAME: wp1
     volumes:
-      - wp_data:/var/www/html
+      - wp1_data:/var/www/html
+    networks:
+      - wp-network
+
+  db1:
+    image: mysql:latest
+    environment:
+      MYSQL_DATABASE: wp1
+      MYSQL_USER: user1
+      MYSQL_PASSWORD: pass1
+      MYSQL_ROOT_PASSWORD: rootpass1
+    volumes:
+      - db1_data:/var/lib/mysql
+    networks:
+      - wp-network
 
 volumes:
-  wpdb_data:
-  wp_data:
+  wp1_data:
+  db1_data:
+
+networks:
+  wp-network:
+    external: true

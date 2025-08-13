@@ -27,8 +27,3 @@ The setup includes Nginx Proxy Manager, which can:
 - Provide an easy-to-use interface for managing all of this.  
 
 Together, these components create a basic self-hosted WordPress site with a user-friendly proxy management interface.
-
-🌐 **Proxy Setup Notes**:  
-Once WordPress is running, you can log into Nginx Proxy Manager via port 81 and:  
-- Create a proxy host that points your domain (e.g., yourdomain.com) to your server's IP address on port 80.  
-- Enable SSL using Let's Encrypt.

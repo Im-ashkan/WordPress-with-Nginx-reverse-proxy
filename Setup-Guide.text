@@ -1,3 +1,8 @@
+Create wp-network for Cross-Container Communication, Security & Isolation and Cleaner DNS Resolution
+
+🛠 How to Create It:
+      docker network create wp-network
+
 🧱 Step-by-Step: Create Containers from YAML Files
       1. Navigate to the Directory
       Make sure you're in the folder where your YAML files are saved:

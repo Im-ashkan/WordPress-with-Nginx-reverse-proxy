@@ -1,0 +1,24 @@
+🧱 Step-by-Step: Create Containers from YAML Files
+      1. Navigate to the Directory
+      Make sure you're in the folder where your YAML files are saved:
+      
+      2. Create the WordPress + DB Containers
+      Run: docker-compose -f wp1.yml -f nginx-proxy-manager.yml up -d
+
+✅ Verify Everything Is Running:
+      docker ps
+
+🌐 Access Your Services
+- WordPress site:
+Visit http://<your-server-ip>:80 to complete WordPress setup
+- NGINX Proxy Manager UI:
+Visit http://<your-server-ip>:81
+Log in with:
+- Email: admin@example.com
+- Password: changeme
+
+
+🌐 **Proxy Setup Notes**:  
+Once WordPress is running, you can log into Nginx Proxy Manager via port 81 and:  
+- Create a proxy host that points your domain (e.g., yourdomain.com) to your server's IP address on port 80.  
+- Enable SSL using Let's Encrypt.

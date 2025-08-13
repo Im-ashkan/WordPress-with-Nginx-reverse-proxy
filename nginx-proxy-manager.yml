@@ -1,13 +1,14 @@
 version: '3'
+
 services:
-  npm:
+  nginx-proxy-manager:
     image: jc21/nginx-proxy-manager:latest
-    container_name: nginx-proxy-manager
     ports:
-      - '80:80'
-      - '81:81'
-      - '443:443'
+      - "80:80"
+      - "81:81"
+      - "443:443"
     volumes:
-      - ./data/npm:/data
-      - ./data/letsencrypt:/etc/letsencrypt
-    restart: always
+      - ./data:/data
+      - ./letsencrypt:/etc/letsencrypt
+    networks:
+      - wp-network
